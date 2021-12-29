@@ -10,7 +10,7 @@ from appium.webdriver.appium_service import AppiumService
 #   ("35.172.146.129:5555", "8201"),
 # ]
 #                         )
-def test_open_weavr_panel():
+def test_open_plugin_panel():
     capabilities = {
         'platformName': 'Android',
         'deviceName': 'Genymotion Cloud PaaS',
@@ -34,14 +34,14 @@ def test_open_weavr_panel():
         main_menu_button = driver.find_element_by_class_name("android.widget.ImageButton")
         main_menu_button.click()
 
-        # interact with the main menu by scrolling it until the points of interest app is visible and then clicking on
+        # interact with the main menu by scrolling it until the plugin is visible and then clicking on
         # it
         weavr_menu_button = driver.find_element_by_android_uiautomator(
             'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text('
             '"Points Of Interest").instance(0));')
         weavr_menu_button.click()
 
-        # find and verify that the tests_weavr_app is present
+        # find and verify that the plugin is present
         weavr_panel = driver.find_element_by_id("com.chesapeaketechnology.takwatch.apps.poi:id/recycleViewPoi")
         assert weavr_panel.is_enabled() == 1
 
